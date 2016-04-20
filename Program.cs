@@ -72,7 +72,8 @@ namespace Hast.Samples.Psc
 
                     #region Crunching big numbers
                     stopwatch.Restart();
-                    var arePrimesOnCpu = new PrimeCalculator().ArePrimeNumbers(numbers.Take(20).ToArray());
+                    var cpuCalculator = new PrimeCalculator();
+                    var arePrimesOnCpu = cpuCalculator.ArePrimeNumbers(numbers.Take(20).ToArray());
                     StopAndWriteTime(stopwatch);
                     Debugger.Break();
                     stopwatch.Restart();
