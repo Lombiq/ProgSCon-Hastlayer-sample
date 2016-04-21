@@ -19,7 +19,7 @@ namespace Hast.Samples.Psc
         public virtual void IsPrimeNumber(SimpleMemory memory)
         {
             var number = memory.ReadUInt32(IsPrimeNumber_InputUInt32Index);
-            var isPrime = IsPrimeNumber(number);
+            var isPrime = IsPrimeNumberInternal(number);
             memory.WriteBoolean(IsPrimeNumber_OutputBooleanIndex, isPrime);
         }
 
@@ -30,13 +30,13 @@ namespace Hast.Samples.Psc
             for (int i = 0; i < numberCount; i++)
             {
                 uint number = memory.ReadUInt32(ArePrimeNumbers_InputUInt32sStartIndex + i);
-                var isPrime = IsPrimeNumber(number);
+                var isPrime = IsPrimeNumberInternal(number);
                 memory.WriteBoolean(ArePrimeNumbers_OutputUInt32sStartIndex + i, isPrime);
             }
         }
 
 
-        private bool IsPrimeNumber(uint number)
+        private bool IsPrimeNumberInternal(uint number)
         {
             uint factor = number / 2;
 
